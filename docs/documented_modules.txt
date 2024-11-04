@@ -1,0 +1,7 @@
+# Parsed by make_docs.py
+scene_synthesizer.scene
+scene_synthesizer.assets
+scene_synthesizer.procedural_assets
+scene_synthesizer.procedural_scenes
+scene_synthesizer.utils
+scene_synthesizer.exchange.export

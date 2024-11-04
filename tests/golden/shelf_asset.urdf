@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='ASCII'?>
+<robot name="Scene">
+  <link name="world"/>
+  <link name="shelf"/>
+  <link name="shelf_board_0">
+    <inertial>
+      <origin xyz="0.0 0.0 0.015" rpy="0.0 -0.0 0.0"/>
+      <mass value="3.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="shelf_board_0">
+      <geometry>
+        <box size="1.0 1.0 0.03"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.015" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_board_0_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision name="shelf_board_0">
+      <geometry>
+        <box size="1.0 1.0 0.03"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.015" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="shelf_board_1">
+    <inertial>
+      <origin xyz="0.0 0.0 0.984999999999998" rpy="0.0 -0.0 0.0"/>
+      <mass value="3.0000000000000027"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="shelf_board_1">
+      <geometry>
+        <box size="1.0 1.0 0.03"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.985" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_board_1_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision name="shelf_board_1">
+      <geometry>
+        <box size="1.0 1.0 0.03"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.985" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="shelf_post_0_0">
+    <inertial>
+      <origin xyz="-0.4999999999999994 -0.49999999999999906 0.4999999999999992" rpy="0.0 -0.0 0.0"/>
+      <mass value="0.28093006370322504"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="shelf_post_0_0">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="-0.5 -0.5 0.5" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_post_0_0_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision name="shelf_post_0_0">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="-0.5 -0.5 0.5" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="shelf_post_0_1">
+    <inertial>
+      <origin xyz="-0.4999999999999994 0.49999999999999967 0.4999999999999994" rpy="0.0 -0.0 0.0"/>
+      <mass value="0.28093006370322504"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="shelf_post_0_1">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="-0.5 0.5 0.5" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_post_0_1_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision name="shelf_post_0_1">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="-0.5 0.5 0.5" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="shelf_post_1_0">
+    <inertial>
+      <origin xyz="0.4999999999999996 -0.49999999999999967 0.4999999999999996" rpy="0.0 -0.0 0.0"/>
+      <mass value="0.2809300637032248"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="shelf_post_1_0">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="0.5 -0.5 0.5" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_post_1_0_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision name="shelf_post_1_0">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="0.5 -0.5 0.5" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="shelf_post_1_1">
+    <inertial>
+      <origin xyz="0.4999999999999996 0.49999999999999944 0.4999999999999996" rpy="0.0 -0.0 0.0"/>
+      <mass value="0.28093006370322493"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="shelf_post_1_1">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="0.5 0.5 0.5" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_post_1_1_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision name="shelf_post_1_1">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="0.5 0.5 0.5" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <joint name="shelf_world_fixed_joint" type="fixed">
+    <parent link="world"/>
+    <child link="shelf"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="shelf_to_shelf_board_0" type="fixed">
+    <parent link="shelf"/>
+    <child link="shelf_board_0"/>
+    <origin xyz="0.0 0.0 -1.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="shelf_to_shelf_board_1" type="fixed">
+    <parent link="shelf"/>
+    <child link="shelf_board_1"/>
+    <origin xyz="0.0 0.0 -1.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="shelf_to_shelf_post_0_0" type="fixed">
+    <parent link="shelf"/>
+    <child link="shelf_post_0_0"/>
+    <origin xyz="0.0 0.0 -1.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="shelf_to_shelf_post_0_1" type="fixed">
+    <parent link="shelf"/>
+    <child link="shelf_post_0_1"/>
+    <origin xyz="0.0 0.0 -1.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="shelf_to_shelf_post_1_0" type="fixed">
+    <parent link="shelf"/>
+    <child link="shelf_post_1_0"/>
+    <origin xyz="0.0 0.0 -1.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="shelf_to_shelf_post_1_1" type="fixed">
+    <parent link="shelf"/>
+    <child link="shelf_post_1_1"/>
+    <origin xyz="0.0 0.0 -1.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+</robot>

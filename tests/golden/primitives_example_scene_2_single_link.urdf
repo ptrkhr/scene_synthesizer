@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='ASCII'?>
+<robot name="Scene">
+  <link name="world">
+    <inertial>
+      <origin xyz="-1.967264164855128e-17 -6.31623832759106e-18 -1.4530928490407198e-18" rpy="0.0 -0.0 0.0"/>
+      <mass value="41.385573220754395"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="box_geometry_0">
+      <geometry>
+        <mesh filename="box_geometry_0.obj"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="box_geometry_0_main_color">
+        <color rgba="0.47843137254901963 0.00784313725490196 0.9882352941176471 1.0"/>
+      </material>
+    </visual>
+    <visual name="cylinder_geometry_0">
+      <geometry>
+        <mesh filename="cylinder_geometry_0.obj"/>
+      </geometry>
+      <origin xyz="2.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="cylinder_geometry_0_main_color">
+        <color rgba="0.6784313725490196 0.9882352941176471 0.00784313725490196 1.0"/>
+      </material>
+    </visual>
+    <visual name="sphere_geometry_0">
+      <geometry>
+        <mesh filename="sphere_geometry_0.obj"/>
+      </geometry>
+      <origin xyz="0.0 2.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="sphere_geometry_0_main_color">
+        <color rgba="0.9882352941176471 0.6980392156862745 0.00784313725490196 1.0"/>
+      </material>
+    </visual>
+    <collision name="box_geometry_0">
+      <geometry>
+        <mesh filename="box_geometry_0.obj"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="cylinder_geometry_0">
+      <geometry>
+        <mesh filename="cylinder_geometry_0.obj"/>
+      </geometry>
+      <origin xyz="2.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="sphere_geometry_0">
+      <geometry>
+        <mesh filename="sphere_geometry_0.obj"/>
+      </geometry>
+      <origin xyz="0.0 2.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+</robot>

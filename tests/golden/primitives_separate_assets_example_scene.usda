@@ -1,0 +1,47 @@
+#usda 1.0
+(
+    defaultPrim = "world"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "world"
+{
+    def Xform "box" (
+        prepend references = @./box.usda@</world/box>
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+    }
+
+    def Xform "sphere" (
+        prepend references = @./sphere.usda@</world/sphere>
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:translate = (0, 2, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+    }
+
+    def Xform "cylinder" (
+        prepend references = @./cylinder.usda@</world/cylinder>
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:translate = (2, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+    }
+
+    def Xform "capsule" (
+        prepend references = @./capsule.usda@</world/capsule>
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:translate = (2, 2, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+    }
+}
+

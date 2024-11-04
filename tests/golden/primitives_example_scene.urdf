@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='ASCII'?>
+<robot name="Scene">
+  <link name="world"/>
+  <link name="box"/>
+  <link name="box_geometry_0">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <mass value="6.0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="box_geometry_0">
+      <geometry>
+        <box size="1.0 2.0 3.0"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="box_geometry_0_main_color">
+        <color rgba="0.47843137254901963 0.00784313725490196 0.9882352941176471 1.0"/>
+      </material>
+    </visual>
+    <collision name="box_geometry_0">
+      <geometry>
+        <box size="1.0 2.0 3.0"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="sphere"/>
+  <link name="sphere_geometry_0">
+    <inertial>
+      <origin xyz="-1.782313695179142e-17 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <mass value="4.152740817093058"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="sphere_geometry_0">
+      <geometry>
+        <sphere radius="1.0"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="sphere_geometry_0_main_color">
+        <color rgba="0.9882352941176471 0.6980392156862745 0.00784313725490196 1.0"/>
+      </material>
+    </visual>
+    <collision name="sphere_geometry_0">
+      <geometry>
+        <sphere radius="1.0"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="cylinder"/>
+  <link name="cylinder_geometry_0">
+    <inertial>
+      <origin xyz="-2.3711731168750936e-17 -8.374362868338648e-18 0.0" rpy="0.0 -0.0 0.0"/>
+      <mass value="31.21445152258052"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="cylinder_geometry_0">
+      <geometry>
+        <cylinder radius="1.0" length="10.0"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="cylinder_geometry_0_main_color">
+        <color rgba="0.6784313725490196 0.9882352941176471 0.00784313725490196 1.0"/>
+      </material>
+    </visual>
+    <collision name="cylinder_geometry_0">
+      <geometry>
+        <cylinder radius="1.0" length="10.0"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <joint name="world_to_box" type="fixed">
+    <parent link="world"/>
+    <child link="box"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="box_to_box_geometry_0" type="fixed">
+    <parent link="box"/>
+    <child link="box_geometry_0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="world_to_sphere" type="fixed">
+    <parent link="world"/>
+    <child link="sphere"/>
+    <origin xyz="0.0 2.0 0.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="sphere_to_sphere_geometry_0" type="fixed">
+    <parent link="sphere"/>
+    <child link="sphere_geometry_0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="world_to_cylinder" type="fixed">
+    <parent link="world"/>
+    <child link="cylinder"/>
+    <origin xyz="2.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+  <joint name="cylinder_to_cylinder_geometry_0" type="fixed">
+    <parent link="cylinder"/>
+    <child link="cylinder_geometry_0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+</robot>

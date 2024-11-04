@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='ASCII'?>
+<robot name="Scene">
+  <link name="shelf">
+    <inertial>
+      <origin xyz="-7.792438395338951e-18 2.337731518601685e-17 0.4999999999999993" rpy="0.0 -0.0 0.0"/>
+      <mass value="7.123720254812902"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="shelf_board_0">
+      <geometry>
+        <box size="1.0 1.0 0.03"/>
+      </geometry>
+      <origin xyz="0.0 0.0 -0.985" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_board_0_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <visual name="shelf_board_1">
+      <geometry>
+        <box size="1.0 1.0 0.03"/>
+      </geometry>
+      <origin xyz="0.0 0.0 -0.015000000000000013" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_board_1_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <visual name="shelf_post_0_0">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="-0.5 -0.5 -0.5" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_post_0_0_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <visual name="shelf_post_0_1">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="-0.5 0.5 -0.5" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_post_0_1_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <visual name="shelf_post_1_0">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="0.5 -0.5 -0.5" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_post_1_0_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <visual name="shelf_post_1_1">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="0.5 0.5 -0.5" rpy="0.0 -0.0 0.0"/>
+      <material name="shelf_post_1_1_main_color">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision name="shelf_board_0">
+      <geometry>
+        <box size="1.0 1.0 0.03"/>
+      </geometry>
+      <origin xyz="0.0 0.0 -0.985" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="shelf_board_1">
+      <geometry>
+        <box size="1.0 1.0 0.03"/>
+      </geometry>
+      <origin xyz="0.0 0.0 -0.015000000000000013" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="shelf_post_0_0">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="-0.5 -0.5 -0.5" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="shelf_post_0_1">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="-0.5 0.5 -0.5" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="shelf_post_1_0">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="0.5 -0.5 -0.5" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="shelf_post_1_1">
+      <geometry>
+        <cylinder radius="0.03" length="1.0"/>
+      </geometry>
+      <origin xyz="0.5 0.5 -0.5" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="world"/>
+  <joint name="shelf_world_fixed_joint" type="fixed">
+    <parent link="world"/>
+    <child link="shelf"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+  </joint>
+</robot>

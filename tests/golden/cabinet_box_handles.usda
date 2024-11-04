@@ -1,0 +1,386 @@
+#usda 1.0
+(
+    defaultPrim = "world"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "world"
+{
+    def Xform "object" (
+        prepend apiSchemas = ["PhysicsArticulationRootAPI", "PhysxArticulationAPI", "PhysicsFilteredPairsAPI"]
+    )
+    {
+        custom string[] joint_names = ["Cabinet_body_to_door_0", "Cabinet_body_to_door_1", "Cabinet_body_to_door_2", "Cabinet_body_to_door_3"]
+        custom double[] joint_positions = [0, 0, 0, 0]
+        prepend rel physics:filteredPairs = [
+            </world/object/Cabinet_body>,
+            </world/object/door_0>,
+            </world/object/door_1>,
+            </world/object/door_2>,
+            </world/object/door_3>,
+        ]
+        quatf xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+        def Xform "Cabinet_body" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            def Cube "Cabinet_body_board_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.5, 1, 0.01)
+                double3 xformOp:translate = (0, 0, -0.01)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "Cabinet_body_board_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.5, 1, 0.01)
+                double3 xformOp:translate = (0, 0, 3.01)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "Cabinet_body_board_2" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.01, 1, 1.52)
+                double3 xformOp:translate = (0.51, 0, 1.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "Cabinet_body_board_3" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.01, 1, 1.52)
+                double3 xformOp:translate = (-0.51, 0, 1.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "Cabinet_body_board_4" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.52, 0.01, 1.52)
+                double3 xformOp:translate = (0, -0.99, 1.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "Cabinet_body_wall" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.005, 1, 1.5)
+                double3 xformOp:translate = (0, 0, 1.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "Cabinet_body_wall_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.2475, 1, 0.005)
+                double3 xformOp:translate = (0.2525, 0, 1.5)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "Cabinet_body_wall_2" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.005, 1, 0.7475)
+                double3 xformOp:translate = (0.2525, 0, 0.7475)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "door_0" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (0.5, 1, 2.2525)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            def Cube "door_0_door" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.2475, 0.0095, 0.7475)
+                double3 xformOp:translate = (-0.2475, 0.0095, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_0_handle_part_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.012, 0.0841, 0.012)
+                double3 xformOp:translate = (-0.445, 0.045, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_0_handle_part_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.007, 0.02, 0.012)
+                double3 xformOp:translate = (-0.445, 0.026, -0.06409999999999999)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_0_handle_part_2" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.007, 0.02, 0.012)
+                double3 xformOp:translate = (-0.445, 0.026, 0.06409999999999999)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "door_1" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (0.2575, 1, 0.7475)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            def Cube "door_1_door" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.12125, 0.0095, 0.7475)
+                double3 xformOp:translate = (0.12125, 0.0095, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_1_handle_part_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.012, 0.0841, 0.012)
+                double3 xformOp:translate = (0.1925, 0.045, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_1_handle_part_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.007, 0.02, 0.012)
+                double3 xformOp:translate = (0.1925, 0.026, -0.06409999999999999)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_1_handle_part_2" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.007, 0.02, 0.012)
+                double3 xformOp:translate = (0.1925, 0.026, 0.06409999999999999)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "door_2" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (0.0050000000000000044, 1, 0.7475)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            def Cube "door_2_door" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.12125, 0.0095, 0.7475)
+                double3 xformOp:translate = (0.12125, 0.0095, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_2_handle_part_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.012, 0.0841, 0.012)
+                double3 xformOp:translate = (0.1925, 0.045, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_2_handle_part_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.007, 0.02, 0.012)
+                double3 xformOp:translate = (0.1925, 0.026, -0.06409999999999999)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_2_handle_part_2" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.007, 0.02, 0.012)
+                double3 xformOp:translate = (0.1925, 0.026, 0.06409999999999999)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "door_3" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (-0.0050000000000000044, 1, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+            def Cube "door_3_door" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.2475, 0.0095, 1.5)
+                double3 xformOp:translate = (-0.2475, 0.0095, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_3_handle_part_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.012, 0.0841, 0.012)
+                double3 xformOp:translate = (-0.445, 0.045, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_3_handle_part_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.007, 0.02, 0.012)
+                double3 xformOp:translate = (-0.445, 0.026, -0.06409999999999999)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Cube "door_3_handle_part_2" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                quatf xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                float3 xformOp:scale = (0.007, 0.02, 0.012)
+                double3 xformOp:translate = (-0.445, 0.026, 0.06409999999999999)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def PhysicsFixedJoint "world_fixed_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            prepend rel physics:body0 = </world>
+            prepend rel physics:body1 = </world/object/Cabinet_body>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "Cabinet_body_to_door_0" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            uniform token physics:axis = "Z"
+            prepend rel physics:body0 = </world/object/Cabinet_body>
+            prepend rel physics:body1 = </world/object/door_0>
+            point3f physics:localPos0 = (0.5, 1, 2.2525)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0, 0, 1, 0)
+            quatf physics:localRot1 = (0, 0, 1, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 90
+        }
+
+        def PhysicsRevoluteJoint "Cabinet_body_to_door_1" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            uniform token physics:axis = "Z"
+            prepend rel physics:body0 = </world/object/Cabinet_body>
+            prepend rel physics:body1 = </world/object/door_1>
+            point3f physics:localPos0 = (0.2575, 1, 0.7475)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 90
+        }
+
+        def PhysicsRevoluteJoint "Cabinet_body_to_door_2" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            uniform token physics:axis = "Z"
+            prepend rel physics:body0 = </world/object/Cabinet_body>
+            prepend rel physics:body1 = </world/object/door_2>
+            point3f physics:localPos0 = (0.005, 1, 0.7475)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 90
+        }
+
+        def PhysicsRevoluteJoint "Cabinet_body_to_door_3" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            uniform token physics:axis = "Z"
+            prepend rel physics:body0 = </world/object/Cabinet_body>
+            prepend rel physics:body1 = </world/object/door_3>
+            point3f physics:localPos0 = (-0.005, 1, 1.5)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0, 0, 1, 0)
+            quatf physics:localRot1 = (0, 0, 1, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 90
+        }
+    }
+}
+

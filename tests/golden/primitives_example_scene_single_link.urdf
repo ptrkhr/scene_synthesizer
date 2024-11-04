@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='ASCII'?>
+<robot name="Scene">
+  <link name="world">
+    <inertial>
+      <origin xyz="-1.968138288686686e-17 -6.319044851771485e-18 0.0" rpy="0.0 -0.0 0.0"/>
+      <mass value="41.36719233967358"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+    <visual name="box_geometry_0">
+      <geometry>
+        <box size="1.0 2.0 3.0"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="box_geometry_0_main_color">
+        <color rgba="0.47843137254901963 0.00784313725490196 0.9882352941176471 1.0"/>
+      </material>
+    </visual>
+    <visual name="cylinder_geometry_0">
+      <geometry>
+        <cylinder radius="1.0" length="10.0"/>
+      </geometry>
+      <origin xyz="2.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="cylinder_geometry_0_main_color">
+        <color rgba="0.6784313725490196 0.9882352941176471 0.00784313725490196 1.0"/>
+      </material>
+    </visual>
+    <visual name="sphere_geometry_0">
+      <geometry>
+        <sphere radius="1.0"/>
+      </geometry>
+      <origin xyz="0.0 2.0 0.0" rpy="0.0 -0.0 0.0"/>
+      <material name="sphere_geometry_0_main_color">
+        <color rgba="0.9882352941176471 0.6980392156862745 0.00784313725490196 1.0"/>
+      </material>
+    </visual>
+    <collision name="box_geometry_0">
+      <geometry>
+        <box size="1.0 2.0 3.0"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="cylinder_geometry_0">
+      <geometry>
+        <cylinder radius="1.0" length="10.0"/>
+      </geometry>
+      <origin xyz="2.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+    <collision name="sphere_geometry_0">
+      <geometry>
+        <sphere radius="1.0"/>
+      </geometry>
+      <origin xyz="0.0 2.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+</robot>
