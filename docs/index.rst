@@ -2,8 +2,7 @@
 Scene Synthesizer Documentation
 ###############################
 
-A Python package to easily create scenes for robot manipulation tasks. For an overview video, see this `NTECH 2021 presentation
-<https://nvidia.sharepoint.com/sites/NTECH2/_layouts/15/stream.aspx?id=%2Fsites%2FNTECH2%2FShared%20Documents%2F2021%2FRobotics%20and%20Autonomous%20Vehicles%2FPresentations%2FPresentation%20Recordings%20%28mp4%29%2FNTECH2021%5F395%5FLarge%2DScale%5FData%5FGeneration%5Ffor%5FRobotic%5FManipulation%2Emp4>`_.
+A Python package to easily create scenes for robot manipulation tasks.
 
 
 .. image:: _static/synth_kitchen.png
