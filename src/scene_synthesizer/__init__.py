@@ -1,4 +1,4 @@
-# Copyright (c) 2021, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+# Copyright (c) 2021-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 #
 # SPDX-License-Identifier: Apache-2.0
 
@@ -22,7 +22,6 @@ from .assets import (
     CQAsset,
     OpenSCADAsset,
 )
-from .procedural_assets import RecursivelyPartitionedCabinetAsset
 from .scene import Scene
 
 

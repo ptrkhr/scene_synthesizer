@@ -1,4 +1,4 @@
-# Copyright (c) 2021, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+# Copyright (c) 2021-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 #
 # NVIDIA CORPORATION and its licensors retain all intellectual property
 # and proprietary rights in and to this software, related documentation
@@ -34,7 +34,7 @@ sys.path.insert(0, root / "src")
 # -- Project information -----------------------------------------------------
 
 project = "Scene Synthesizer"
-copyright = "2021, NVIDIA"
+copyright = "2021-2024, NVIDIA"
 author = "Clemens Eppner et al."
 
 # -- Run sphinx-apidoc -------------------------------------------------------

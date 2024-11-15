@@ -51,7 +51,7 @@ A Python package to easily create scenes for robot manipulation tasks.
    examples/isaaclab_teleop.rst
 
 
-Projects Using Scene Synthesizer
+Projects Using scene_synthesizer
 ================================
 
 * `Motion Policy Networks <https://mpinets.github.io/>`__
@@ -59,3 +59,17 @@ Projects Using Scene Synthesizer
 * `Imitating Task and Motion Planning with Visuomotor Transformers <https://mihdalal.github.io/optimus/>`__
 * `M2T2: Multi-Task Masked-Transformer for Object-centric Pick and Place <https://m2-t2.github.io/>`__
 * `RoboPoint: A Vision-Language Model for Spatial Affordance Prediction for Robotics <https://robo-point.github.io/>`__
+
+How Can I Cite This Library?
+============================
+
+..  code-block:: latex
+
+   @article{Eppner2024, 
+      title = {scene_synthesizer: A Python Library for Procedural Scene Generation in Robot Manipulation}, 
+      author = {Clemens Eppner and Adithyavairavan Murali and Caelan Garrett and Rowland O'Flaherty and Tucker Hermans and Wei Yang and Dieter Fox},
+      journal = {Journal of Open Source Software}
+      publisher = {The Open Journal}, 
+      year = {2024},
+   }
+

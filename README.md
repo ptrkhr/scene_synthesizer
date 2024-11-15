@@ -13,3 +13,15 @@ cd scene_synthesizer/
 pip install -e.[recommend]
 ```
 See the [documentation](https://scene-synthesizer.github.io/getting_started/install.html) for detailed installation instructions.
+
+## How can I cite this library?
+
+```
+@article{Eppner2024, 
+    title = {scene_synthesizer: A Python Library for Procedural Scene Generation in Robot Manipulation}, 
+    author = {Clemens Eppner and Adithyavairavan Murali and Caelan Garrett and Rowland O'Flaherty and Tucker Hermans and Wei Yang and Dieter Fox},
+    journal = {Journal of Open Source Software}
+    publisher = {The Open Journal}, 
+    year = {2024},
+}
+```
