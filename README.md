@@ -14,6 +14,10 @@ pip install -e.[recommend]
 ```
 See the [documentation](https://scene-synthesizer.github.io/getting_started/install.html) for detailed installation instructions.
 
+## License
+
+The code is released under the [Apache-2.0 license](https://github.com/NVlabs/scene_synthesizer/blob/main/LICENSE).
+
 ## How can I cite this library?
 
 ```

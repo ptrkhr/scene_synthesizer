@@ -37,6 +37,10 @@ project = "Scene Synthesizer"
 copyright = "2021-2024, NVIDIA"
 author = "Clemens Eppner et al."
 
+from scene_synthesizer import __version__ as synth_version
+version = synth_version
+release = version
+
 # -- Run sphinx-apidoc -------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
 # `sphinx-build -b html docs _build/docs`.

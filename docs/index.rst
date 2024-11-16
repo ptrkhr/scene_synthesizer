@@ -50,7 +50,6 @@ A Python package to easily create scenes for robot manipulation tasks.
    examples/isaaclab_rl.rst
    examples/isaaclab_teleop.rst
 
-
 Projects Using scene_synthesizer
 ================================
 
@@ -59,6 +58,11 @@ Projects Using scene_synthesizer
 * `Imitating Task and Motion Planning with Visuomotor Transformers <https://mihdalal.github.io/optimus/>`__
 * `M2T2: Multi-Task Masked-Transformer for Object-centric Pick and Place <https://m2-t2.github.io/>`__
 * `RoboPoint: A Vision-Language Model for Spatial Affordance Prediction for Robotics <https://robo-point.github.io/>`__
+
+License
+=======
+
+The code is released under the [Apache-2.0 license](https://github.com/NVlabs/scene_synthesizer/blob/main/LICENSE).
 
 How Can I Cite This Library?
 ============================
