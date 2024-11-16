@@ -62,7 +62,7 @@ Projects Using scene_synthesizer
 License
 =======
 
-The code is released under the [Apache-2.0 license](https://github.com/NVlabs/scene_synthesizer/blob/main/LICENSE).
+The code is released under the `Apache-2.0 license <https://github.com/NVlabs/scene_synthesizer/blob/main/LICENSE>`__.
 
 How Can I Cite This Library?
 ============================
