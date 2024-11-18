@@ -12,6 +12,7 @@ A Python package to easily create scenes for robot manipulation tasks.
    :maxdepth: 1
    :caption: Getting Started
 
+   GitHub Repository <https://github.com/NVlabs/scene_synthesizer>
    getting_started/install.rst
    getting_started/faq.rst
 

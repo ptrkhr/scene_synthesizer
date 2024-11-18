@@ -7,8 +7,15 @@ Check the [documentation](https://scene-synthesizer.github.io/) page for detaile
 
 This project will download and install additional third-party open source software projects. Review the license terms of these open source projects before use.
 
+### Via pip
 ```
-# clone repository
+pip install scene-synthesizer[recommend]
+```
+
+### Via git
+```
+# create and activate conda env or venv
+git clone https://github.com/NVlabs/scene_synthesizer.git
 cd scene_synthesizer/
 pip install -e.[recommend]
 ```
