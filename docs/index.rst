@@ -78,3 +78,6 @@ How Can I Cite This Library?
       year = {2024},
    }
 
+
+
+Paper PDF: `Link <https://drive.google.com/file/d/1fewL5ezXhlICAv_BNqyLe5YjaXAbXH2Y/view?usp=sharing>`__
