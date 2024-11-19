@@ -1,0 +1,20 @@
+name: Trigger Docs Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allow manual triggering of this workflow
+
+jobs:
+  trigger-repo-a:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Docs Workflow
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.DOCS_REPO_PAT }}" \
+            https://api.github.com/repos/scene-synthesizer/scene-synthesizer.github.io/actions/workflows/publish.yml/dispatches \
+            -d '{"ref":"main"}'

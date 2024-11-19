@@ -1,3 +1,7 @@
+[![PyPI version](https://badge.fury.io/py/scene-synthesizer.svg)](https://badge.fury.io/py/scene-synthesizer)
+[![Static Badge](https://img.shields.io/badge/docs-passing-brightgreen)](https://scene-synthesizer.github.io/)
+[![Static Badge](https://img.shields.io/badge/arXiv-preprint-D12424)](https://drive.google.com/file/d/1fewL5ezXhlICAv_BNqyLe5YjaXAbXH2Y/view?usp=sharing)
+
 # scene_synthesizer
 
 A python package to generate manipulation scenes.
