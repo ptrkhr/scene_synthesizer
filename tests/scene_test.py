@@ -40,7 +40,7 @@ def _set_random_seed():
 def test_mass():
     _set_random_seed()
 
-    cabinet = synth.RecursivelyPartitionedCabinetAsset(
+    cabinet = pa.RecursivelyPartitionedCabinetAsset(
         width=1, depth=1, height=1, use_box_handle=True
     )
 
@@ -109,7 +109,7 @@ def test_volume_density_mass_consistency():
 def test_density():
     _set_random_seed()
 
-    cabinet = synth.RecursivelyPartitionedCabinetAsset(
+    cabinet = pa.RecursivelyPartitionedCabinetAsset(
         width=1, depth=1, height=1, use_box_handle=True
     )
 
@@ -408,7 +408,7 @@ def test_asset_function():
     _set_random_seed()
 
     scene = synth.Scene()
-    cabinet = synth.RecursivelyPartitionedCabinetAsset(
+    cabinet = pa.RecursivelyPartitionedCabinetAsset(
         width=1, depth=1, height=1, use_box_handle=True
     )
     box = synth.BoxAsset(extents=[0.05, 0.05, 0.05], origin=("com", "com", "bottom"))
@@ -430,7 +430,7 @@ def test_rename_geometries():
     _set_random_seed()
 
     scene = synth.Scene()
-    cabinet = synth.RecursivelyPartitionedCabinetAsset(
+    cabinet = pa.RecursivelyPartitionedCabinetAsset(
         width=1, depth=1, height=1, use_box_handle=True
     )
     box = synth.BoxAsset(extents=[0.05, 0.05, 0.05], origin=("com", "com", "bottom"))
@@ -450,7 +450,7 @@ def test_move_object():
     _set_random_seed()
 
     scene = synth.Scene()
-    cabinet = synth.RecursivelyPartitionedCabinetAsset(
+    cabinet = pa.RecursivelyPartitionedCabinetAsset(
         width=1, depth=1, height=1, use_box_handle=True
     )
     box = synth.BoxAsset(extents=[0.05, 0.05, 0.05], origin=("com", "com", "bottom"))

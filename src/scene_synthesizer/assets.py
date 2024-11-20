@@ -1361,7 +1361,12 @@ class USDAsset(Asset):
             scale = usd_import.get_scale(mesh_prim)
             if not np.allclose(scale, [1.0, 1.0, 1.0]):
                 geometry.apply_scale(scale)
-
+            
+            # Store the original mesh exents, note that this *includes* the file-specific
+            # scaling factor. During reference-based export we will use this information
+            # to infer any additional necessary scaling factor.
+            # Note: There might be a use case in which storing the extents *before* scaling
+            # the geometry is helpful.
             utils.add_extents_to_trimesh_metadata(mesh_or_scene=geometry)
 
             node_name = _usd_prim_path_to_node_name(mesh_path)

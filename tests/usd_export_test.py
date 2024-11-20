@@ -154,7 +154,7 @@ def test_cabinet_usd_export(tmp_path):
     usd_expected = str(TEST_DIR / "golden/cabinet_box_handles.usda")
     usd_actual = str(Path(tmp_path) / "cabinet_box_handles.usda")
 
-    x = synth.RecursivelyPartitionedCabinetAsset(1, 2, 3, use_box_handle=True, seed=111).scene()
+    x = procedural_assets.RecursivelyPartitionedCabinetAsset(1, 2, 3, use_box_handle=True, seed=111).scene()
     x.export(usd_actual)
 
     assert filecmp.cmp(
