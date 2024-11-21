@@ -13,28 +13,28 @@ tags:
 authors:
   - name: Clemens Eppner
     orcid: 0000-0002-5398-4037
-    # affiliation: "1"
+    affiliation: 1
     corresponding: true
   - name: Adithyavairavan Murali
-    # affiliation: "1"
+    affiliation: 1
   - name: Caelan Garrett
     orcid: 0000-0002-6474-1276
-    # affiliation: "1"
+    affiliation: 1
   - name: Rowland O'Flaherty
-    # affiliation: "1"
+    affiliation: 1
   - name: Tucker Hermans
     orcid: 0000-0003-2496-2768
-    # affiliation: "1"
+    affiliation: 1
   - name: Wei Yang
     orcid: 0000-0003-3975-2472
-    # affiliation: "1"
+    affiliation: 1
   - name: Dieter Fox
     orcid: 0009-0009-4694-9127
-    # affiliation: "1"
+    affiliation: 1
 
 affiliations:
  - name: NVIDIA Research
-#    index: 1
+   index: 1
 date: 30 April 2024
 bibliography: paper.bib
 ---
@@ -42,7 +42,7 @@ bibliography: paper.bib
 # Summary
 `scene_synthesizer` is a library for writing procedural scene generators in Python with a special focus on robot manipulation. The resulting scenes can be exported to various formats, enabling physics simulation or rendering data pipelines for training robotics or vision models.
 
-![A synthetic kitchen scene. From top to bottom, left to right: Shown in the debug viewer, exported as mesh file in MeshLab, simulated in pybullet, Mujoco, Isaac Sim, and Isaac Lab.](../imgs/paper_teaser.png){ width=100% }
+![A synthetic kitchen scene. From top to bottom, left to right: Shown in the debug viewer, exported as mesh file in MeshLab, simulated in pybullet, Mujoco, Isaac Sim, and Isaac Lab.](paper_teaser.png){ width=100% }
 
 # Statement of Need
 Simulation is an ever increasing data source for training deep learning models.
