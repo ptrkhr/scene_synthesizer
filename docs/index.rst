@@ -1,6 +1,6 @@
-###############################
-Scene Synthesizer Documentation
-###############################
+#########################################
+Scene Synthesizer |version| Documentation
+#########################################
 
 A Python package to easily create scenes for robot manipulation tasks.
 
