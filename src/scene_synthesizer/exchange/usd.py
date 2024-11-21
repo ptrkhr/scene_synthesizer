@@ -822,46 +822,56 @@ def export_usd(
             if object_name in referenced_stages
             else get_stage(referenced_stage_fnames[object_name])
         )
-
-        referenced_stage_scaling_factor = (
-            get_meters_per_unit(referenced_stage) / stage_meters_per_unit
-        )
+        stage_will_be_written = bool(object_name in referenced_stages)
         
-        geom_scales = []
-        for object_geom_node_name in scene.get_geometry_names(object_name):
-            object_geom_name = scene.graph.transforms.node_data[object_geom_node_name]['geometry']
-            if "extents" in scene.geometry[object_geom_name].metadata:
-                geom_scales.append(
-                    scene.geometry[object_geom_name].extents
-                    / scene.geometry[object_geom_name].metadata["extents"]
-                )
-        geom_scales = np.array(geom_scales)
-        
-        # check if consistent
-        if len(geom_scales) > 0:
-            if not np.allclose(geom_scales - geom_scales[0], 0, atol=1e-4):
-                log.warning(
-                    f"Geometries of referenced USD asset have different scales. Won't apply any"
-                    f" scaling. Result maybe wrong."
-                )
-            else:
-                if np.allclose(geom_scales[0] - geom_scales[0][0], 0.0):
-                    # scalar scale
-                    referenced_stage_scaling_factor *= geom_scales[0][0]
-                else:
-                    # vector scale
-                    referenced_stage_scaling_factor = (
-                        geom_scales[0] * referenced_stage_scaling_factor
+        referenced_stage_scaling_factor = None
+        if not stage_will_be_written:
+            referenced_stage_scaling_factor = (
+                get_meters_per_unit(referenced_stage) / stage_meters_per_unit
+            )
+            
+            # Determine how much the geometry is scaled w.r.t. to its initial size
+            geom_scales = []
+            for object_geom_node_name in scene.get_geometry_names(object_name):
+                object_geom_name = scene.graph.transforms.node_data[object_geom_node_name]['geometry']
+                if "extents" in scene.geometry[object_geom_name].metadata:
+                    geom_scales.append(
+                        scene.geometry[object_geom_name].extents
+                        / scene.geometry[object_geom_name].metadata["extents"]
                     )
         
+            geom_scales = np.array(geom_scales)
+            
+            # check if consistent
+            if len(geom_scales) > 0:
+                if not np.allclose(geom_scales - geom_scales[0], 0, atol=1e-4):
+                    log.warning(
+                        f"Geometries of referenced USD asset have different scales. Won't apply any"
+                        f" scaling. Result maybe wrong."
+                    )
+                else:
+                    if np.allclose(geom_scales[0] - geom_scales[0][0], 0.0):
+                        # scalar scale
+                        referenced_stage_scaling_factor *= geom_scales[0][0]
+                    else:
+                        # vector scale
+                        referenced_stage_scaling_factor = (
+                            geom_scales[0] * referenced_stage_scaling_factor
+                        )
+            
+            # If 1.0 set to None
+            if np.allclose(referenced_stage_scaling_factor, 1.0):
+                referenced_stage_scaling_factor = None
+
+        # TODO(ceppner): does not scale the articulation units
         scene_path = scenegraph_to_usd_primpath[object_name]
+        # Note: This overwrites the transform/scale in the
+        # referenced file.
         prim = usd_export.add_xform(
             stage=stage,
             scene_path=scene_path,
             transform=referenced_stage_transforms[object_name],
-            scale=referenced_stage_scaling_factor
-            if not np.allclose(referenced_stage_scaling_factor, 1.0)
-            else None,
+            scale=referenced_stage_scaling_factor,
         )
 
         if scene.is_articulated(object_name):

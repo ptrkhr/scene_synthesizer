@@ -1310,7 +1310,7 @@ class USDAsset(Asset):
                 else:
                     matrix = transform_A @ transform_B
 
-            log.debug(f"Adding {parent_path} ({parent_node_name})--> {xform_path} ({node_name})")
+            log.debug(f"Adding {parent_path} ({parent_node_name})--> {xform_path} ({node_name}) with transform={matrix}")
             utils.add_node_to_scene(
                 scene=s,
                 node_name=node_name,
@@ -1357,18 +1357,17 @@ class USDAsset(Asset):
                 fname=self._fname,
                 file_element=mesh_prim.GetPath().pathString,
             )
+            # Store the original mesh exents, note that this does *not* include the file-specific
+            # scaling factor. During reference-based export we will use this information
+            # to infer any additional necessary scaling factor.
+            # Note: There might be a use case in which storing the extents *after* scaling
+            # the geometry is helpful.
+            utils.add_extents_to_trimesh_metadata(mesh_or_scene=geometry)
 
             scale = usd_import.get_scale(mesh_prim)
             if not np.allclose(scale, [1.0, 1.0, 1.0]):
                 geometry.apply_scale(scale)
             
-            # Store the original mesh exents, note that this *includes* the file-specific
-            # scaling factor. During reference-based export we will use this information
-            # to infer any additional necessary scaling factor.
-            # Note: There might be a use case in which storing the extents *before* scaling
-            # the geometry is helpful.
-            utils.add_extents_to_trimesh_metadata(mesh_or_scene=geometry)
-
             node_name = _usd_prim_path_to_node_name(mesh_path)
             parent_node_name = _usd_prim_path_to_node_name(mesh_prim.GetParent().GetPath())
             if _usd_prim_path_to_node_name(mesh_prim.GetParent().GetPath()) not in s.graph.nodes:
