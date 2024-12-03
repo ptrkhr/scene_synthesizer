@@ -82,6 +82,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx_rtd_theme",
     "sphinx.ext.autosummary",  # Create neat summary tables
+    "sphinxcontrib.bibtex",
 ]
 autosummary_generate = True  # Turn on sphinx.ext.autosummary
 
@@ -152,3 +153,7 @@ todo_include_todos = True
 # html_theme_options = {"navigation_depth": 1}
 
 autodoc_preserve_defaults = True
+
+# sphinxcontrib-bibtex setting
+bibtex_bibfiles = ["../paper/paper.bib"]
+bibtex_default_style = 'unsrt'

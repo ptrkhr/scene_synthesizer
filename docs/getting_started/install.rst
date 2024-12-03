@@ -2,7 +2,7 @@
 Installation
 ############
 
-This project will download and install additional third-party open source software projects. Review the license terms of these open source projects before use.
+This project will download and install additional third-party open source software projects. Review the license terms of these open source projects before use (e.g. `OpenUSD license <https://openusd.org/license>`_).
 
 There are two ways to install ``scene_synthesizer``: either directly installing from a PyPI server or by cloning the code repository.
 
