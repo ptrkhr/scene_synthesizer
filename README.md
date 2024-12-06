@@ -29,6 +29,11 @@ See the [documentation](https://scene-synthesizer.github.io/getting_started/inst
 
 The code is released under the [Apache-2.0 license](https://github.com/NVlabs/scene_synthesizer/blob/main/LICENSE).
 
+
+## Contributions
+
+Found a bug? Help us by reporting it! Want a new feature? Create an issue! Made something useful or fixed a bug? Start a PR! Check the [contribution guidelines](CONTRIBUTING.md).
+
 ## How can I cite this library?
 
 ```
