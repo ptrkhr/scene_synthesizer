@@ -12,7 +12,6 @@ from pathlib import Path
 from typing import Any, Optional
 
 # Third Party
-import meshsets
 import numpy as np
 import trimesh
 import trimesh.transformations as tra
@@ -64,6 +63,8 @@ def numpy_random_state_context(seed: Optional[int] = None):
 
 def generate_scene(usd_path) -> None:
     """Generate the microwave ball scene."""
+    import meshsets
+
     _set_random_seed()
 
     dataset_partnet_mobility = meshsets.load_dataset("PartNet Mobility")
@@ -590,6 +591,8 @@ def test_link_offset(tmp_path):
 
 @_skip_if_file_is_missing
 def test_missing_fixed_joint(tmp_path):
+    import meshsets
+
     _set_random_seed()
 
     usd_expected = str(TEST_DIR / "golden/test_missing_fixed_joint.usda")
