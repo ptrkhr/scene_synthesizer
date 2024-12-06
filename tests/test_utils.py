@@ -17,7 +17,7 @@ def _skip_if_file_is_missing(func):
         except ErrorException as e:
             if 'Failed to open layer' in str(e):
                 pytest.skip(f"Skipping: {e}")
-        except ModuleNotFoundError as e:
+        except ImportError as e:
             pytest.skip(f"Skipping: {e}")
         return ret
     return functools.update_wrapper(wrapper, func)

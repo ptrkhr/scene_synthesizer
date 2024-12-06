@@ -30,7 +30,7 @@ def _set_random_seed():
 def kitchen_scene():
     try:
         from scene_synthesizer import examples
-    except ModuleNotFoundError as e:
+    except ImportError as e:
         pytest.skip(f"Skipping because module not found: {e}")
 
     _set_random_seed()
@@ -48,7 +48,7 @@ def kitchen_scene():
 def kitchen_scene_collision():
     try:
         from scene_synthesizer import examples
-    except ModuleNotFoundError as e:
+    except ImportError as e:
         pytest.skip(f"Skipping because module not found: {e}")
 
     _set_random_seed()
