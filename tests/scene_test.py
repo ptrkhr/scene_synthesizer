@@ -16,26 +16,17 @@ import trimesh.transformations as tra
 
 # SRL
 import scene_synthesizer as synth
-from scene_synthesizer import examples
 from scene_synthesizer import procedural_assets as pa
 from scene_synthesizer import utils
 
+from .test_utils import _skip_if_file_is_missing
+
 TEST_DIR = Path(__file__).parent
-
-
-@pytest.fixture(scope="module")
-def microwave_ball_scene():
-    # SRL
-    from scene_synthesizer.examples import microwave_ball_table_scene
-
-    _set_random_seed()
-    return microwave_ball_table_scene(use_collision_geometry=True)
 
 
 def _set_random_seed():
     random.seed(111)
     np.random.seed(111)
-
 
 def test_mass():
     _set_random_seed()
@@ -53,13 +44,13 @@ def test_mass():
 
     assert np.allclose(desired_mass, current_mass)
 
-
+@_skip_if_file_is_missing
 def test_mass_nonwatertight_geometry():
     _set_random_seed()
 
     asset_root_dir = os.path.join(TEST_DIR, "data", "assets")
     microwave_asset_path = os.path.join(asset_root_dir, "partnet_mobility_v0/7236/mobility.urdf")
-
+    
     scene = synth.Asset(microwave_asset_path).scene()
     assert not scene.is_watertight("object")
 
@@ -67,7 +58,7 @@ def test_mass_nonwatertight_geometry():
     scene.set_mass("object", desired_mass)
     assert np.allclose(scene.get_mass("object"), desired_mass)
 
-
+@_skip_if_file_is_missing
 def test_density_nonwatertight_geometry():
     _set_random_seed()
 
@@ -82,6 +73,7 @@ def test_density_nonwatertight_geometry():
     assert np.allclose(scene.get_density("object"), desired_density)
 
 
+@_skip_if_file_is_missing
 def test_volume_density_mass_consistency():
     _set_random_seed()
 
@@ -185,7 +177,9 @@ def test_geometry_vs_object_node_names():
     assert scene1_obj_names == scene2_geom_names
 
 
+@_skip_if_file_is_missing
 def test_layers():
+    from scene_synthesizer import examples
     _set_random_seed()
 
     s = examples.microwave_ball_table_scene(use_collision_geometry=True, seed=111)
@@ -204,6 +198,7 @@ def test_layers():
     assert s.get_layer_names() == {"visual"}
 
 
+@_skip_if_file_is_missing
 def test_geometry_approximation():
     _set_random_seed()
 
@@ -305,6 +300,7 @@ def test_surface_coverage():
     )
 
 
+@_skip_if_file_is_missing
 def test_subscene():
     scene = synth.Scene()
     microwave_asset = synth.Asset(
@@ -465,8 +461,13 @@ def test_move_object():
     assert nodes_before == set(scene.graph.nodes)
 
 
-def test_get_object_names_and_transforms(microwave_ball_scene):
+@_skip_if_file_is_missing
+def test_get_object_names_and_transforms():
+    from scene_synthesizer.examples import microwave_ball_table_scene
+
     _set_random_seed()
+
+    microwave_ball_scene = microwave_ball_table_scene(use_collision_geometry=True)
 
     expected_obj_names = sorted(["table", "microwaveoven", "ball"])
 
@@ -479,8 +480,13 @@ def test_get_object_names_and_transforms(microwave_ball_scene):
     assert np.allclose(obj_transforms["microwaveoven"][:3, 3], [0.0026825, 0.01970401, 0.92086477])
 
 
-def test_get_collapse_and_simplify(microwave_ball_scene, tmp_path):
+@_skip_if_file_is_missing
+def test_get_collapse_and_simplify(tmp_path):
+    from scene_synthesizer.examples import microwave_ball_table_scene
+
     _set_random_seed()
+
+    microwave_ball_scene = microwave_ball_table_scene(use_collision_geometry=True)
 
     microwave_ball_scene.remove_joints(
         microwave_ball_scene.get_joint_names(joint_type_query="floating")
@@ -557,6 +563,7 @@ def test_stable_object_placement():
 
 
 # Make sure you have `pip install pytest-timeout` to run this test
+@_skip_if_file_is_missing
 @pytest.mark.timeout(5)
 def test_stable_pose_calculation(tmp_path):
     _set_random_seed()
@@ -642,7 +649,9 @@ def test_collision_manager():
     )
 
 
+@_skip_if_file_is_missing
 def test_collision_manager_with_scene():
+    from scene_synthesizer import examples
     for seed in range(10):
         s = examples.table_chair_scene(use_shapenetsem=True, seed=seed)
 
@@ -692,6 +701,7 @@ def test_bounds_extents_centroid():
     assert np.allclose(s.get_center_mass(["box"], "box"), expected_centroid_box)
 
 
+@_skip_if_file_is_missing
 def test_origin_com():
     _set_random_seed()
     expected_bounds_table = [
@@ -738,6 +748,7 @@ def test_origin_com():
     )
 
 
+@_skip_if_file_is_missing
 def test_origin_centroid():
     _set_random_seed()
     expected_bounds_table = [
@@ -779,6 +790,7 @@ def test_origin_centroid():
     )
 
 
+@_skip_if_file_is_missing
 def test_origin_center():
     _set_random_seed()
     expected_bounds_table = [
@@ -820,6 +832,7 @@ def test_origin_center():
     )
 
 
+@_skip_if_file_is_missing
 def test_origin_top():
     _set_random_seed()
     expected_bounds_table = [[[-75.93595655, -74.34480294, -39.85945466], [0.0, 0.0, 0.0]]]
@@ -857,6 +870,7 @@ def test_origin_top():
     )
 
 
+@_skip_if_file_is_missing
 def test_origin_bottom():
     _set_random_seed()
     expected_bounds_table = [[[0.0, 0.0, 0.0], [75.93595655, 74.34480294, 39.85945466]]]
@@ -925,6 +939,7 @@ def test_adding_object():
     # check for a thing
 
 
+@_skip_if_file_is_missing
 def test_scaling_asset():
     _set_random_seed()
 
@@ -978,6 +993,7 @@ def test_scaling_asset():
     assert np.any(np.isclose(extents, 0.3))
 
 
+@_skip_if_file_is_missing
 def test_rotation_scaling_asset():
     _set_random_seed()
 
@@ -1068,6 +1084,7 @@ def test_rotation_scaling_asset():
     assert np.any(np.isclose(extents, 0.3))
 
 
+@_skip_if_file_is_missing
 def test_support_surface_generator():
     _set_random_seed()
 
@@ -1109,6 +1126,7 @@ def test_support_surface_generator():
     assert np.allclose(expected_facet_indices, res_indices)
 
 
+@_skip_if_file_is_missing
 def test_container_generator():
     _set_random_seed()
 
@@ -1149,11 +1167,12 @@ def test_container_generator():
     assert np.allclose(expected_facet_indices, res_indices)
 
 
+@_skip_if_file_is_missing
 def test_support_as_layer():
+    from scene_synthesizer import examples
     _set_random_seed()
-
-    s = examples.support_surfaces(
-        asset_fnames=[
+    
+    asset_fnames=[
             os.path.join(TEST_DIR, "data", "assets", "shapenetsem_watertight", "1Shelves", x)
             for x in [
                 "160684937ae737ec5057ad0f363d6ddd.obj",
@@ -1161,7 +1180,10 @@ def test_support_as_layer():
                 "2b9d60c74bc0d18ad8eae9bce48bbeed.obj",
                 "a9c2bcc286b68ee217a3b9ca1765e2a4.obj",
             ]
-        ],
+        ]
+
+    s = examples.support_surfaces(
+        asset_fnames=asset_fnames,
         seed=111,
     )
 
@@ -1205,7 +1227,9 @@ def test_support_as_layer():
         assert n in geometry_names
 
 
+@_skip_if_file_is_missing
 def test_container_as_layer():
+    from scene_synthesizer import examples
     _set_random_seed()
 
     s = examples.container_volumes(
@@ -1261,7 +1285,9 @@ def test_container_as_layer():
         assert n in geometry_names
 
 
+@_skip_if_file_is_missing
 def test_part_as_layer():
+    from scene_synthesizer import examples
     _set_random_seed()
 
     s = examples.microwave_ball_table_scene(use_collision_geometry=True, seed=111)
@@ -1307,7 +1333,9 @@ def test_part_as_layer():
         assert n in geometry_names
 
 
+@_skip_if_file_is_missing
 def test_adding_object_transform():
+    from scene_synthesizer import examples
     _set_random_seed()
 
     s = examples.microwave_ball_table_scene(use_collision_geometry=True, seed=111)
@@ -1334,7 +1362,9 @@ def test_adding_object_transform():
         assert np.allclose(T[:3, 3], T_expected)
 
 
+@_skip_if_file_is_missing
 def test_randomization():
+    from scene_synthesizer import examples
     s1 = examples.table_chair_scene(use_shapenetsem=True, seed=3)
     s2 = examples.table_chair_scene(use_shapenetsem=True, seed=3)
 

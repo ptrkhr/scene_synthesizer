@@ -32,6 +32,9 @@ def asset():
 
     asset_root_dir = os.path.join(TEST_DIR, "data", "assets")
     microwave_asset_path = os.path.join(asset_root_dir, "partnet_mobility_v0/7236/mobility.urdf")
+    
+    if not os.path.isfile(microwave_asset_path):
+        pytest.skip(f"Skipping because of missing file: {microwave_asset_path}")
 
     asset = synth.Asset(microwave_asset_path)
 
@@ -45,10 +48,12 @@ def asset_scale_2():
     asset_root_dir = os.path.join(TEST_DIR, "data", "assets")
     microwave_asset_path = os.path.join(asset_root_dir, "partnet_mobility_v0/7236/mobility.urdf")
 
+    if not os.path.isfile(microwave_asset_path):
+        pytest.skip(f"Skipping because of missing file: {microwave_asset_path}")
+
     asset = synth.Asset(microwave_asset_path, scale=2.0)
 
     return asset
-
 
 def test_extents(asset, asset_scale_2):
     expected_extents = np.array([0.769314, 1.586709, 0.961642])

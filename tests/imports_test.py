@@ -14,6 +14,8 @@ import yourdfpy
 # SRL
 import scene_synthesizer as synth
 
+from .test_utils import _skip_if_file_is_missing
+
 TEST_DIR = Path(__file__).parent
 
 
@@ -26,13 +28,7 @@ def _remove_UUID_string(list_of_strings):
     return [s.split(":")[0] for s in list_of_strings]
 
 
-def test_import_kitchen():
-    # SRL
-    from scene_synthesizer.examples import kitchen
-
-    my_kitchen = kitchen()
-
-
+@_skip_if_file_is_missing
 def test_import_urdf():
     _set_random_seed()
 
@@ -331,6 +327,7 @@ def test_import_urdf():
         )
 
 
+@_skip_if_file_is_missing
 def test_import_book_usd():
     book_usd = str(TEST_DIR / "data/assets/kitchen_set/assets/Book/Book.usd")
 
@@ -404,6 +401,7 @@ def test_import_book_usd():
         ), f"Color of imported faces for {geom_name} of {book_usd} doesn't match expectation."
 
 
+@_skip_if_file_is_missing
 def test_import_articulated_usd_srl_top_cabinet():
     _set_random_seed()
 
@@ -417,6 +415,7 @@ def test_import_articulated_usd_srl_top_cabinet():
     assert np.allclose(cabinet.get_extents(), [0.38114257, 0.4332533, 0.76199994], atol=1e-3)
 
 
+@_skip_if_file_is_missing
 def test_resizing_and_origin_articulated_usd_srl_top_cabinet():
     _set_random_seed()
 
@@ -429,6 +428,7 @@ def test_resizing_and_origin_articulated_usd_srl_top_cabinet():
     assert np.allclose(cabinet.get_bounds(), [[-1, -0.5, 0], [0, 0.5, 1]], atol=1e-5)
 
 
+@_skip_if_file_is_missing
 def test_usd_overlay_joint_positions():
     _set_random_seed()
 
@@ -458,6 +458,7 @@ def test_usd_overlay_joint_positions():
 
     assert np.allclose(expected_joint_configuration, s.get_configuration())
 
+@_skip_if_file_is_missing
 def test_usd_overlay_joint_positions_missing_one_joint_position():
     _set_random_seed()
 
@@ -486,6 +487,7 @@ def test_usd_overlay_joint_positions_missing_one_joint_position():
 
     assert np.allclose(expected_joint_configuration, s.get_configuration())
 
+@_skip_if_file_is_missing
 def test_nested_mesh_with_nonxform_def():
     _set_random_seed()
 
@@ -494,6 +496,7 @@ def test_nested_mesh_with_nonxform_def():
 
     assert len(s.geometry) > 0
 
+@_skip_if_file_is_missing
 def test_scaling_uniform_for_urdf():
     _set_random_seed()
 
@@ -505,6 +508,7 @@ def test_scaling_uniform_for_urdf():
     assert s.scene.extents[2] == 1.5
 
 
+@_skip_if_file_is_missing
 def test_scaling_nonuniform_for_urdf():
     _set_random_seed()
 
@@ -525,6 +529,7 @@ def test_scaling_nonuniform_for_urdf():
     assert np.allclose(robot.scene.extents, [1.25967642, 0.784365, 0.8442879])
 
 
+@_skip_if_file_is_missing
 def test_scaling_nonuniform_origin_for_urdf():
     _set_random_seed()
 
@@ -549,6 +554,7 @@ def test_scaling_nonuniform_origin_for_urdf():
     assert np.allclose(-robot.scene.bounds[0], robot.scene.bounds[1])
 
 
+@_skip_if_file_is_missing
 def test_special_configuration_initialization_urdf():
     _set_random_seed()
     fname = str(TEST_DIR / "data/assets/partnet_mobility_v0/7236/mobility.urdf")
@@ -576,6 +582,7 @@ def test_special_configuration_initialization_urdf():
     assert np.allclose(expected_limit_upper, actual_cfg)
 
 
+@_skip_if_file_is_missing
 def test_special_configuration_initialization_urdf_with_defaults():
     _set_random_seed()
 
@@ -621,6 +628,7 @@ def test_special_configuration_initialization_urdf_with_defaults():
     assert np.allclose(expected_limit_upper, actual_cfg)
 
 
+@_skip_if_file_is_missing
 def test_special_configuration_initialization_usd():
     _set_random_seed()
     fname = str(TEST_DIR / "data/assets/srl_kitchen/srl-top-cabinet.usd")
@@ -637,6 +645,7 @@ def test_special_configuration_initialization_usd():
     assert np.allclose(expected_limit_upper, actual_cfg)
 
 
+@_skip_if_file_is_missing
 def test_scaling_URDF_prismatic_joint_limit():
     _set_random_seed()
     window_fname = str(TEST_DIR / "data/assets/partnet_mobility_v0/103148/mobility.urdf")
@@ -651,6 +660,7 @@ def test_scaling_URDF_prismatic_joint_limit():
     s = synth.Asset(window_fname, scale=(3.0, 1.0, 5.0)).scene()
     assert np.allclose(prismatic_joint_limits * 1.0, s.get_joint_limits())
 
+@_skip_if_file_is_missing
 def test_import_glb():
     _set_random_seed()
 
@@ -660,6 +670,7 @@ def test_import_glb():
     
     assert True
 
+@_skip_if_file_is_missing
 def test_front_up_vectors():
     _set_random_seed()
 

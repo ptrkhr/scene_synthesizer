@@ -19,7 +19,9 @@ import trimesh.transformations as tra
 
 # SRL
 import scene_synthesizer as synth
-from scene_synthesizer import examples, procedural_assets
+from scene_synthesizer import procedural_assets
+
+from .test_utils import _skip_if_file_is_missing
 
 TEST_DIR = Path(__file__).parent
 
@@ -59,7 +61,6 @@ def numpy_random_state_context(seed: Optional[int] = None):
         yield
     finally:
         np.random.set_state(state)
-
 
 def generate_scene(usd_path) -> None:
     """Generate the microwave ball scene."""
@@ -136,6 +137,7 @@ def generate_scene(usd_path) -> None:
     scene.export(usd_path, include_light_nodes=True)
 
 
+@_skip_if_file_is_missing
 def test_microwave_ball_usd_export(tmp_path) -> None:
     """Test `Scene.export` to USD method."""
 
@@ -148,6 +150,7 @@ def test_microwave_ball_usd_export(tmp_path) -> None:
     ), f"Actual USD: {usd_actual}  Expected USD: {usd_expected}"
 
 
+@_skip_if_file_is_missing
 def test_cabinet_usd_export(tmp_path):
     _set_random_seed()
 
@@ -162,7 +165,10 @@ def test_cabinet_usd_export(tmp_path):
     ), f"Actual USD: {usd_actual}  Expected USD: {usd_expected}"
 
 
+@_skip_if_file_is_missing
 def test_primitives_usd_export(tmp_path):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     usd_expected = str(TEST_DIR / "golden/primitives_example_scene.usda")
@@ -176,7 +182,10 @@ def test_primitives_usd_export(tmp_path):
     ), f"Actual USD: {usd_actual}  Expected USD: {usd_expected}"
 
 
+@_skip_if_file_is_missing
 def test_primitives_2_usd_export(tmp_path):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     usd_expected = str(TEST_DIR / "golden/primitives_example_scene_2.usda")
@@ -209,6 +218,7 @@ def test_scene_with_fixed_joint(tmp_path):
     ), f"Actual USD: {usd_actual}  Expected USD: {usd_expected}"
 
 
+@_skip_if_file_is_missing
 def test_joint_properties(tmp_path):
     _set_random_seed()
 
@@ -380,8 +390,10 @@ def test_simpler_box_scene_fixed_joints(tmp_path):
         usd_expected, usd_actual, shallow=False
     ), f"Actual USD: {usd_actual}  Expected USD: {usd_expected}"
 
-
+@_skip_if_file_is_missing
 def test_separate_usd_assets_export(tmp_path):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     usd_expected = str(TEST_DIR / "golden/primitives_separate_assets_example_scene.usda")
@@ -402,8 +414,10 @@ def test_separate_usd_assets_export(tmp_path):
             usd_asset_expected, usd_asset_actual, shallow=False
         ), f"Actual USD: {usd_asset_actual}  Expected USD: {usd_asset_expected}"
 
-
+@_skip_if_file_is_missing
 def test_import_exported_usd_primitives(tmp_path):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     usd_path = str(Path(tmp_path) / "test_import_exported_primitives.usd")
@@ -447,6 +461,7 @@ def test_import_exported_usd_proc_kitchen(tmp_path):
     assert np.allclose(my_scene_verts, same_scene_verts, atol=1e6)
 
 
+@_skip_if_file_is_missing
 def test_import_exported_srl_kitchen_cabinet(tmp_path):
     _set_random_seed()
 
@@ -471,6 +486,7 @@ def test_import_exported_srl_kitchen_cabinet(tmp_path):
     )
 
 
+@_skip_if_file_is_missing
 def test_write_usd_object_files_false(tmp_path):
     _set_random_seed()
 
@@ -495,6 +511,7 @@ def test_write_usd_object_files_false(tmp_path):
         assert np.allclose(bounds, scene_bounds, atol=1e-5)
 
 
+@_skip_if_file_is_missing
 def test_write_usd_object_files_false_with_scale(tmp_path):
     _set_random_seed()
 
@@ -522,6 +539,7 @@ def test_write_usd_object_files_false_with_scale(tmp_path):
         )
 
 
+@_skip_if_file_is_missing
 def test_write_usd_object_files_false_with_transform(tmp_path):
     _set_random_seed()
 
@@ -570,6 +588,7 @@ def test_link_offset(tmp_path):
     ), f"Actual USD: {usd_actual}  Expected USD: {usd_expected}"
 
 
+@_skip_if_file_is_missing
 def test_missing_fixed_joint(tmp_path):
     _set_random_seed()
 

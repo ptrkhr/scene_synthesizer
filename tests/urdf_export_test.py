@@ -16,7 +16,8 @@ import yourdfpy
 
 # SRL
 import scene_synthesizer as synth
-from scene_synthesizer import examples
+
+from .test_utils import _skip_if_file_is_missing
 
 TEST_DIR = Path(__file__).parent
 
@@ -26,7 +27,10 @@ def _set_random_seed():
     np.random.seed(111)
 
 
+@_skip_if_file_is_missing
 def test_primitives_urdf_export(tmp_path):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     urdf_expected = str(TEST_DIR / "golden/primitives_example_scene.urdf")
@@ -49,7 +53,10 @@ def test_primitives_urdf_export(tmp_path):
     ), f"{urdf_actual} differs from {urdf_expected}"
 
 
+@_skip_if_file_is_missing
 def test_primitives_urdf_export_single_link(tmp_path):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     urdf_expected = str(TEST_DIR / "golden/primitives_example_scene_single_link.urdf")
@@ -71,7 +78,10 @@ def test_primitives_urdf_export_single_link(tmp_path):
     ), f"{urdf_actual} differs from {urdf_expected}"
 
 
+@_skip_if_file_is_missing
 def test_primitives_urdf_export_single_link_with_separate_assets(tmp_path):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     urdf_actual = str(Path(tmp_path) / "primitives_example_scene_single_link.urdf")
@@ -96,7 +106,10 @@ def test_primitives_urdf_export_single_link_with_separate_assets(tmp_path):
         ), f"{urdf_actual} differs from {urdf_expected}"
 
 
+@_skip_if_file_is_missing
 def test_primitives_2_urdf_export(tmp_path):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     urdf_expected = str(TEST_DIR / "golden/primitives_example_scene_2.urdf")
@@ -114,7 +127,10 @@ def test_primitives_2_urdf_export(tmp_path):
     ), f"{urdf_actual} differs from {urdf_expected}"
 
 
-def test_primitives_2_urdf_export_single_link(tmp_path):
+@_skip_if_file_is_missing
+def test_primitives_2_urdf_export_single_link(tmp_path):    
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     urdf_expected = str(TEST_DIR / "golden/primitives_example_scene_2_single_link.urdf")
@@ -132,6 +148,7 @@ def test_primitives_2_urdf_export_single_link(tmp_path):
     ), f"{urdf_actual} differs from {urdf_expected}"
 
 
+@_skip_if_file_is_missing
 def test_usd_to_urdf_export(tmp_path):
     _set_random_seed()
 

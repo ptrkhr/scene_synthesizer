@@ -16,7 +16,8 @@ import yourdfpy
 # SRL
 import scene_synthesizer as synth
 from scene_synthesizer import procedural_assets as pa
-from scene_synthesizer.examples import primitives_scene
+
+from .test_utils import _skip_if_file_is_missing
 
 TEST_DIR = Path(__file__).parent
 
@@ -25,23 +26,40 @@ def _set_random_seed():
     random.seed(111)
     np.random.seed(111)
 
-
 @pytest.fixture(scope="module")
 def kitchen_scene():
-    # SRL
-    from scene_synthesizer.examples import kitchen
+    try:
+        from scene_synthesizer import examples
+    except ModuleNotFoundError as e:
+        pytest.skip(f"Skipping because module not found: {e}")
 
     _set_random_seed()
-    return kitchen(use_collision_geometry=False, seed=11)
+
+    try:
+        kitchen = examples.kitchen(seed=11, use_collision_geometry=False)
+    except ValueError as e:
+        if "is not a file" in str(e):
+            pytest.skip(f"Skipping because file not found: {e}")
+
+    return kitchen
 
 
 @pytest.fixture(scope="module")
 def kitchen_scene_collision():
-    # SRL
-    from scene_synthesizer.examples import kitchen
+    try:
+        from scene_synthesizer import examples
+    except ModuleNotFoundError as e:
+        pytest.skip(f"Skipping because module not found: {e}")
 
     _set_random_seed()
-    return kitchen(use_collision_geometry=True, seed=11)
+
+    try:
+        kitchen = examples.kitchen(seed=11, use_collision_geometry=True)
+    except ValueError as e:
+        if "is not a file" in str(e):
+            pytest.skip(f"Skipping because file not found: {e}")
+
+    return kitchen
 
 
 @pytest.fixture(scope="module")
@@ -122,6 +140,7 @@ def test_export_urdf_kitchen_collision_write_meshes(tmpdir, golden_dir, kitchen_
     ), f"{output_fname} differs from {golden_urdf_fname}"
 
 
+@_skip_if_file_is_missing
 def test_export_urdf_nonwatertight_mass_setting(tmpdir):
     output_fname = os.path.join(tmpdir, "non_watertight_mass_test.urdf")
 
@@ -169,6 +188,7 @@ def test_export_urdf_nonwatertight_mass_setting(tmpdir):
     # assert np.allclose(expected_com, actual_com)
 
 
+@_skip_if_file_is_missing
 def test_export_urdf_different_joint_configurations(tmpdir):
     _set_random_seed()
 
@@ -207,6 +227,7 @@ def test_export_urdf_different_joint_configurations(tmpdir):
     )
 
 
+@_skip_if_file_is_missing
 def test_export_obj_scale(tmpdir):
     _set_random_seed()
 
@@ -230,6 +251,7 @@ def test_export_obj_scale(tmpdir):
     assert np.allclose(scene_1_bounds, scene_2_bounds)
 
 
+@_skip_if_file_is_missing
 def test_export_obj_as_urdf_scale(tmpdir):
     _set_random_seed()
 
@@ -253,6 +275,7 @@ def test_export_obj_as_urdf_scale(tmpdir):
     assert np.allclose(scene_1_bounds, scene_2_bounds)
 
 
+@_skip_if_file_is_missing
 def test_export_urdf_scale(tmpdir):
     _set_random_seed()
 
@@ -308,11 +331,14 @@ def test_center_mass_urdf(tmpdir):
     assert np.allclose(u.get_center_mass(["object"]), desired_center_mass, atol=25e-4)
 
 
+@_skip_if_file_is_missing
 def test_export_primitives_gltf(tmpdir):
+    from scene_synthesizer import examples
+
     _set_random_seed()
 
     goal_path = str(Path(tmpdir) / "primitives.gltf")
-    s = primitives_scene()
+    s = examples.primitives_scene()
     s.export(goal_path)
 
     result = trimesh.load(goal_path)

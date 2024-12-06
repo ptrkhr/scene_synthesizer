@@ -12,9 +12,9 @@ import numpy as np
 import pytest
 
 # SRL
-from scene_synthesizer import examples
 from scene_synthesizer import procedural_assets as pa
 
+from .test_utils import _skip_if_file_is_missing
 
 def _set_random_seed():
     random.seed(111)
@@ -23,14 +23,38 @@ def _set_random_seed():
 
 @pytest.fixture(scope="module")
 def kitchen_scene():
+    try:
+        from scene_synthesizer import examples
+    except ModuleNotFoundError as e:
+        pytest.skip(f"Skipping because module not found: {e}")
+
     _set_random_seed()
-    return examples.kitchen(seed=0, use_collision_geometry=False)
+
+    try:
+        kitchen = examples.kitchen(seed=0, use_collision_geometry=False)
+    except ValueError as e:
+        if "is not a file" in str(e):
+            pytest.skip(f"Skipping because file not found: {e}")
+
+    return kitchen
 
 
 @pytest.fixture(scope="module")
 def kitchen_scene_collision():
+    try:
+        from scene_synthesizer import examples
+    except ModuleNotFoundError as e:
+        pytest.skip(f"Skipping because module not found: {e}")
+
     _set_random_seed()
-    return examples.kitchen(seed=0, use_collision_geometry=True)
+
+    try:
+        kitchen = examples.kitchen(seed=0, use_collision_geometry=True)
+    except ValueError as e:
+        if "is not a file" in str(e):
+            pytest.skip(f"Skipping because file not found: {e}")
+
+    return kitchen
 
 
 def test_kitchen_bounds(kitchen_scene):
@@ -47,7 +71,10 @@ def test_kitchen_collision_bounds(kitchen_scene_collision):
     assert np.allclose(expected_bounds, bounds), f"expected: {expected_bounds}  actual: {bounds}"
 
 
+@_skip_if_file_is_missing
 def test_vertical_wall_oven_microwave_cabinet():
+    from scene_synthesizer import examples
+
     s = examples.vertical_wall_oven_microwave_cabinet()
 
     vertex_hist = np.histogram(s.scene.dump(concatenate=True).vertices)

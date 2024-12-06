@@ -1097,8 +1097,8 @@ class Scene(object):
                 wall = BoxAsset(extents=extents[dim]) if use_primitives else BoxMeshAsset(extents=extents[dim])
 
             self.add_object(
-                f"wall_{dim}",
                 wall,
+                f"wall_{dim}",
                 connect_parent_id=self._scene.graph.base_frame,
                 connect_parent_anchor=parent_achors[dim],
                 connect_obj_anchor=obj_anchors[dim],
